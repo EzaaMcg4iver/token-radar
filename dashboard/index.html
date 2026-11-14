@@ -1,14 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Token Radar: pre-token protocols ranked by implied value</title>
+<title>Token Launch Radar — radar-2</title>
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
-<a class="skip" href="#board">Skip to the board</a>
-<main id="board" tabindex="-1" aria-busy="true"></main>
+<header class="top">
+  <div>
+    <h1>TOKEN LAUNCH RADAR</h1>
+    <p class="sub">Pre-token protocols, ranked by implied value. Model radar-2: $250M base &times; TVL^0.85 &times; growth &times; maturity. No name is ever special-cased — the value follows only from the snapshot's own figures.</p>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<section class="controls">
+  <label>Search <input id="q" type="search" placeholder="protocol name or slug"></label>
+  <label>Category <select id="cat"><option value="">All categories</option></select></label>
+  <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+  <label>Board
+    <select id="mode">
+      <option value="pre">Pre-token (no token recorded)</option>
+      <option value="live">Live tokens (already trading)</option>
+    </select>
+  </label>
+  <button id="clear" type="button">Clear filters</button>
+</section>
+
+<p class="count" id="count"></p>
+
+<table id="board">
+  <thead>
+    <tr>
+      <th data-sort="rank">Rank</th>
+      <th data-sort="name">Protocol</th>
+      <th data-sort="tvl_usd">TVL</th>
+      <th data-sort="change_7d">7d</th>
+      <th data-sort="age_days">Age</th>
+      <th data-sort="implied_value_usd">Implied value</th>
+    </tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<dialog id="detail">
+  <div id="detail-body"></div>
+  <button id="close-detail" type="button">Close</button>
+</dialog>
+
 <script src="../data.js"></script>
 <script src="app.js"></script>
 </body>
